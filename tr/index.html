@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr" data-page-language="tr" data-asset-base="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ali Vleeswaren, Zele'de bireysel müşteriler, kasaplar, horeca ve foodservice için helal et tedarikçisidir. Dana, kuzu ve tavuk eti kg veya 5, 10 ve 20 kg kutularda. Ayrıca şarküteri, dondurulmuş ürünler, baharatlar ve marinasyonlar.">
+  <meta name="theme-color" content="#0a1020">
+  <title>Ali Vleeswaren | Bireysel ve toptan satış için helal et</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <span class="topbar-label"><span class="live-dot"></span> <span data-i18n="topbar.live">Live promo</span></span>
+        <span id="tickerPromoText">Nieuwe promo's worden hier automatisch getoond.</span>
+        <a href="#promo-spotlight" class="topbar-link"><span data-i18n="topbar.spotlight">Bekijk spotlight</span> <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <div class="navbar-shell">
+      <nav class="container navbar" aria-label="Hoofdnavigatie">
+        <a href="#home" class="brand" aria-label="Ali Vleeswaren home">
+          <span class="brand-mark"><i class="fa-solid fa-drumstick-bite"></i></span>
+          <span class="brand-copy">
+            <span class="brand-name">Ali Vleeswaren</span>
+            <span class="brand-sub" data-i18n="brand.sub">Halal vlees &bull; Zele</span>
+          </span>
+        </a>
+
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMenu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="nav-menu" id="navMenu">
+          <div class="mobile-menu-head">
+            <a href="#home" class="brand" aria-label="Ali Vleeswaren home">
+              <span class="brand-mark"><i class="fa-solid fa-drumstick-bite"></i></span>
+              <span class="brand-copy">
+                <span class="brand-name">Ali Vleeswaren</span>
+                <span class="brand-sub" data-i18n="brand.sub">Halal vlees &bull; Zele</span>
+              </span>
+            </a>
+            <button type="button" class="menu-close" id="menuClose" aria-label="Menu sluiten">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <ul class="nav-links">
+            <li><a href="#home" class="active" data-nav="home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#over-ons" data-nav="over-ons" data-i18n="nav.about">Over Ons</a></li>
+            <li><a href="#assortiment" data-nav="assortiment" data-i18n="nav.assortment">Assortiment</a></li>
+            <li><a href="#rundvlees-snijkaart" data-nav="rundvlees-snijkaart" data-i18n="cuts.kicker">Vlees snijkaart</a></li>
+            <li><a href="#promo-spotlight" data-nav="promo-spotlight" data-i18n="nav.promo">Promo Spotlight</a></li>
+            <li><a href="../klanten/tr/" data-nav="word-klant" data-i18n="nav.customer">Word klant</a></li>
+          </ul>
+
+          <div class="nav-actions">
+            <a href="#contact" class="nav-contact" data-nav="contact"><span data-i18n="nav.contact">Contact</span> <i class="fa-solid fa-arrow-right"></i></a>
+            <div class="lang-switch" role="group" aria-label="Taal kiezen" data-i18n-aria-label="lang.label">
+              <a class="lang-btn" data-lang="nl" href="../nl/" aria-current="page">NL</a>
+              <a class="lang-btn" data-lang="fr" href="../fr/">FR</a>
+              <a class="lang-btn" data-lang="en" href="../en/">EN</a>
+              <a class="lang-btn" data-lang="tr" href="../tr/">TR</a>
+              <a class="lang-btn" data-lang="ar" href="../ar/">AR</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="nav-backdrop" id="navBackdrop"></div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <span class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">Halal vlees &bull; Particulieren &amp; groothandel &bull; Levering heel België</span></span>
+        <h1 data-i18n-html="hero.title">Halal vlees en <span class="accent">kruiden voor particulieren</span> en groothandel.</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">Ali Vleeswaren koopt rechtstreeks in bij erkende slachthuizen en levert aan particulieren, beenhouwers, horeca en foodservice. Per kg of per doos van 5, 10 en 20 kg. Voor particuliere en professionele kopers.</p>
+
+        <div class="hero-actions">
+          <a href="#assortiment" class="btn btn-primary"><span data-i18n="hero.ctaAssortment">Bekijk ons aanbod</span> <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="https://wa.me/32470123456?text=Dag%20Ali%20Vleeswaren%2C%20ik%20wil%20graag%20een%20prijs%20of%20beschikbaarheid%20aanvragen%20voor%20particulier%20of%20groothandel." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" data-wa-key="wa.general" data-track="whatsapp_hero"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="hero.ctaWhatsapp">Vraag uw prijs</span></a>
+        </div>
+
+        <div class="hero-pills" aria-label="Kernkenmerken">
+          <span class="hero-pill"><i class="fa-solid fa-certificate"></i> <span data-i18n="hero.halal">100% halal</span></span>
+          <span class="hero-pill"><i class="fa-solid fa-weight-hanging"></i> <span data-i18n="hero.unit">Per kg of per doos</span></span>
+          <span class="hero-pill"><i class="fa-solid fa-box-open"></i> <span data-i18n="hero.box">5 &bull; 10 &bull; 20 kg</span></span>
+          <span class="hero-pill"><i class="fa-solid fa-handshake"></i> <span data-i18n="hero.b2b">Particulier &amp; groothandel</span></span>
+        </div>
+      </div>
+
+      <a href="#stats" class="hero-scroll"><span data-i18n="hero.scroll">Ontdek ons aanbod</span> <i class="fa-solid fa-chevron-down"></i></a>
+    </section>
+
+    <div class="stats-wrap" id="stats">
+      <div class="container stats-grid">
+        <article class="stat-card reveal">
+          <span class="stat-icon"><i class="fa-solid fa-industry"></i></span>
+          <div class="stat-copy">
+            <strong data-i18n="stats.slaughter.title">Rechtstreeks van slachthuis</strong>
+            <span data-i18n="stats.slaughter.text">Inkoop bij erkende slachthuizen, zonder tussenstappen.</span>
+          </div>
+        </article>
+        <article class="stat-card reveal">
+          <span class="stat-icon"><i class="fa-solid fa-weight-hanging"></i></span>
+          <div class="stat-copy">
+            <strong data-i18n="stats.unit.title">Per kg of per doos</strong>
+            <span data-i18n="stats.unit.text">Bestel per kg, 5 kg doos, 10 kg doos of 20 kg karton.</span>
+          </div>
+        </article>
+        <article class="stat-card reveal">
+          <span class="stat-icon"><i class="fa-solid fa-truck-fast"></i></span>
+          <div class="stat-copy">
+            <strong data-i18n="stats.delivery.title">Levering heel België</strong>
+            <span data-i18n="stats.delivery.text">Voor particulieren, beenhouwers, horeca en foodservice.</span>
+          </div>
+        </article>
+        <article class="stat-card reveal">
+          <span class="stat-icon"><i class="fa-solid fa-boxes-stacked"></i></span>
+          <div class="stat-copy">
+            <strong data-i18n="stats.products.title">75+ producten</strong>
+            <span data-i18n="stats.products.text">Vlees, vleeswaren, diepvries, kruiden en marinades.</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <section class="section cuts-section" id="rundvlees-snijkaart">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker"><i class="fa-solid fa-cow"></i> <span data-i18n="cuts.kicker">Vlees snijkaart</span></span>
+          <h2 class="section-title" data-i18n-html="cuts.title">Snijkaarten voor <span class="accent">rund, lam & kip.</span></h2>
+          <p class="section-subtitle" data-i18n="cuts.subtitle">Interactieve snijkaarten met de belangrijkste sneden van rund, lam en kip, met de bijhorende producten en prijzen.</p>
+        </div>
+        <div id="cutMapsPanels" class="reveal"></div>
+      </div>
+    </section>
+
+    <section class="section promo-section" id="promo-spotlight">
+      <div class="container">
+        <div class="promo-header reveal">
+          <div>
+            <span class="section-kicker light"><i class="fa-solid fa-bolt"></i> <span data-i18n="promo.kicker">Live promo spotlight</span></span>
+            <h2 class="section-title light" data-i18n-html="promo.title">Promo's &amp; <span class="accent">nieuwe voorraad</span></h2>
+            <p class="section-subtitle light" style="margin-left:0;" data-i18n="promo.subtitle">Acties voor particulieren, beenhouwers, horeca en foodservice. Nieuwe promo's en uitgelichte producten verschijnen hier automatisch bovenaan.</p>
+          </div>
+          <div class="promo-live">
+            <span class="live-dot"></span>
+            <span><strong id="promoCount">3</strong> <span data-i18n="promo.live">live acties</span></span>
+          </div>
+        </div>
+
+        <div class="promo-grid reveal" id="promoGrid"></div>
+
+        <div class="empty-state" id="promoEmpty">
+          <i class="fa-solid fa-tags"></i>
+          <strong data-i18n="promo.emptyTitle">Nog geen actieve promo's</strong>
+          <span data-i18n="promo.emptyText">Nieuwe promo's verschijnen hier automatisch zodra ze beschikbaar zijn.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section catalog-section" id="assortiment">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker" data-i18n="catalog.kicker">Volledig assortiment</span>
+          <h2 class="section-title" data-i18n-html="catalog.title">Vlees, vleeswaren en kruiden <span class="accent">per kg of per doos.</span></h2>
+          <p class="section-subtitle" data-i18n="catalog.subtitle">Filter op rund, lam, kip, vleeswaren, diepvries, kruiden, marinades en grootverbruik. Bestel per kg of per karton van 5, 10 of 20 kg. Prijzen zijn indicatief; vraag uw prijs per volume.</p>
+        </div>
+
+        <div class="order-strip reveal" aria-label="Bestelvoorwaarden">
+          <span><i class="fa-solid fa-weight-hanging"></i> <span data-i18n="order.kg">Per kg</span></span>
+          <span><i class="fa-solid fa-box"></i> <span data-i18n="order.box5">5 kg doos</span></span>
+          <span><i class="fa-solid fa-box-open"></i> <span data-i18n="order.box10">10 kg doos</span></span>
+          <span><i class="fa-solid fa-boxes-stacked"></i> <span data-i18n="order.box20">20 kg karton</span></span>
+          <strong class="order-note"><i class="fa-solid fa-circle-info"></i> <span data-i18n="order.min">Minimale bestelling: 5 kg</span></strong>
+        </div>
+
+        <div class="animal-section reveal">
+          <div class="animal-head">
+            <div>
+              <span class="section-kicker"><i class="fa-solid fa-hand-pointer"></i> <span data-i18n="animals.kicker">Kies uw vlees</span></span>
+              <h3 class="animal-title" data-i18n="animals.title">Klik op een dier en bekijk meteen de producten.</h3>
+            </div>
+            <button type="button" class="animal-all" data-animal-category="all">
+              <i class="fa-solid fa-layer-group"></i> <span data-i18n="animals.all">Toon alles</span>
+            </button>
+          </div>
+
+          <div class="animal-grid" id="animalGrid">
+            <button type="button" class="animal-card" data-animal-category="rund" aria-pressed="false">
+              <span class="animal-art" aria-hidden="true">
+                <img class="animal-photo" src="../images/beef.jpg" alt="" loading="lazy" width="900" height="600">
+              </span>
+              <span class="animal-copy">
+                <strong data-i18n="animals.cow.title">Rundvlees</strong>
+                <span data-i18n="animals.cow.meats">Entrecôte · Ribeye · Ossenhaas · Gehakt</span>
+              </span>
+              <span class="animal-cta"><span data-i18n="animals.view">Bekijk producten</span> <i class="fa-solid fa-arrow-right"></i></span>
+            </button>
+
+            <button type="button" class="animal-card" data-animal-category="lam" aria-pressed="false">
+              <span class="animal-art" aria-hidden="true">
+                <img class="animal-photo" src="../images/lamb.jpg" alt="" loading="lazy" width="900" height="600">
+              </span>
+              <span class="animal-copy">
+                <strong data-i18n="animals.sheep.title">Lamsvlees</strong>
+                <span data-i18n="animals.sheep.meats">Lamsbout · Lamsrack · Lamsschouder · Gehakt</span>
+              </span>
+              <span class="animal-cta"><span data-i18n="animals.view">Bekijk producten</span> <i class="fa-solid fa-arrow-right"></i></span>
+            </button>
+
+            <button type="button" class="animal-card" data-animal-category="kip" aria-pressed="false">
+              <span class="animal-art" aria-hidden="true">
+                <img class="animal-photo" src="../images/chicken.jpg" alt="" loading="lazy" width="900" height="600">
+              </span>
+              <span class="animal-copy">
+                <strong data-i18n="animals.chicken.title">Kip &amp; Gevogelte</strong>
+                <span data-i18n="animals.chicken.meats">Kipfilet · Kipdijfilet · Kippenvleugels · Kipspies</span>
+              </span>
+              <span class="animal-cta"><span data-i18n="animals.view">Bekijk producten</span> <i class="fa-solid fa-arrow-right"></i></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-wrap reveal">
+          <div class="filter-pills" id="filterPills" aria-label="Filter producten op categorie" data-i18n-aria-label="catalog.filterLabel"></div>
+          <div class="catalog-meta" id="catalogMeta"><strong>0</strong> <span data-i18n="catalog.visible">producten zichtbaar</span></div>
+        </div>
+
+        <div class="product-grid reveal" id="productGrid"></div>
+
+        <div class="no-products" id="noProducts">
+          <i class="fa-solid fa-box-open"></i>
+          <strong data-i18n="catalog.noTitle">Geen producten in deze categorie</strong>
+          <span data-i18n="catalog.noText">Kies een andere categorie of bekijk het volledige assortiment.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="over-ons">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual reveal">
+            <div class="about-photo-main">
+              <img src="../images/wholesale.jpg" alt="Vleesverwerking in de groothandel" loading="lazy">
+            </div>
+            <div class="about-photo-small">
+              <img src="../images/bulk.jpg" alt="Kartonnen en pallets in het magazijn" loading="lazy">
+            </div>
+            <div class="about-badge">
+              <strong>B2B</strong>
+              <span data-i18n="about.badge">Particulier &amp; groothandel</span>
+            </div>
+          </div>
+
+          <div class="about-copy reveal">
+            <span class="section-kicker" data-i18n="about.kicker">Over Ali Vleeswaren</span>
+            <h2 class="section-title" data-i18n="about.title">Vanuit Zele, voor particulier en groothandel.</h2>
+            <p class="lead" style="margin-top:18px;" data-i18n="about.lead">Ali Vleeswaren koopt rechtstreeks in bij erkende slachthuizen en levert aan particulieren, beenhouwers, horeca en foodservice.</p>
+            <p data-i18n="about.p1">Ons aanbod bestaat uit rund-, lam- en kippenvlees, vleeswaren, diepvriesproducten, kruiden, marinades en grootverpakkingen. U bestelt per kg of per doos van 5, 10 of 20 kg, afhankelijk van uw volume en noden.</p>
+            <p data-i18n="about.p2">Wij focussen op correcte prijzen, constante kwaliteit en snelle opvolging. Zowel particuliere klanten als professionele afnemers zijn welkom.</p>
+
+            <ul class="about-list">
+              <li><i class="fa-solid fa-industry"></i> <span data-i18n="about.list1">Inkoop bij erkende slachthuizen</span></li>
+              <li><i class="fa-solid fa-weight-hanging"></i> <span data-i18n="about.list2">Per kg of per doos van 5, 10 en 20 kg</span></li>
+              <li><i class="fa-solid fa-truck-fast"></i> <span data-i18n="about.list3">Levering aan particulieren en groothandel in heel België</span></li>
+              <li><i class="fa-solid fa-pepper-hot"></i> <span data-i18n="about.list4">Volledig kruiden- en marinade-assortiment</span></li>
+            </ul>
+
+            <div class="about-metrics">
+              <div>
+                <strong>75+</strong>
+                <span data-i18n="about.metric1">Producten</span>
+              </div>
+              <div>
+                <strong>5–20 kg</strong>
+                <span data-i18n="about.metric2">Per doos of karton</span>
+              </div>
+              <div>
+                <strong>100%</strong>
+                <span data-i18n="about.metric3">Halal en traceerbaar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section customer-section" id="word-klant">
+      <div class="container">
+        <div class="customer-grid">
+          <div class="customer-copy reveal">
+            <span class="section-kicker"><i class="fa-solid fa-user-plus"></i> <span data-i18n="customer.kicker">Word klant</span></span>
+            <h2 class="section-title" data-i18n-html="customer.title">Word klant en krijg <span class="accent">8% welkomstkorting.</span></h2>
+            <p class="lead" data-i18n="customer.subtitle">Particuliere en professionele klanten krijgen bij hun eerste aanvraag een welkomstkorting. Laat uw gegevens achter en wij contacteren u meteen met de juiste prijzen.</p>
+
+            <ul class="customer-benefits">
+              <li>
+                <span class="customer-benefit-icon"><i class="fa-solid fa-percent"></i></span>
+                <div>
+                  <strong data-i18n="customer.b1Title">8% welkomstkorting</strong>
+                  <span data-i18n="customer.b1Text">Op uw eerste bestelling na goedkeuring.</span>
+                </div>
+              </li>
+              <li>
+                <span class="customer-benefit-icon"><i class="fa-solid fa-tags"></i></span>
+                <div>
+                  <strong data-i18n="customer.b2Title">Prijzen op maat</strong>
+                  <span data-i18n="customer.b2Text">Per kg, per doos of per karton, afhankelijk van uw volume.</span>
+                </div>
+              </li>
+              <li>
+                <span class="customer-benefit-icon"><i class="fa-solid fa-headset"></i></span>
+                <div>
+                  <strong data-i18n="customer.b3Title">Snelle opvolging</strong>
+                  <span data-i18n="customer.b3Text">Wij antwoorden via WhatsApp, telefoon of e-mail.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="customer-card reveal">
+            <div class="customer-discount">
+              <strong id="discountPercent">8%</strong>
+              <span data-i18n="customer.discount">welkomstkorting</span>
+            </div>
+
+            <form class="customer-form" id="customerForm">
+              <div class="customer-form-head">
+                <h3 data-i18n="customer.formTitle">Word klant</h3>
+                <p data-i18n="customer.formText">Vul kort uw gegevens in. Wij nemen daarna contact op.</p>
+              </div>
+
+              <div class="field">
+                <label for="cType" data-i18n="customer.type">Type klant *</label>
+                <select id="cType" name="type" required>
+                  <option value="particulier" data-i18n="customer.typePrivate">Particulier</option>
+                  <option value="groothandel" data-i18n="customer.typeWholesale">Groothandel / horeca</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="cBusiness" data-i18n="customer.business">Bedrijfsnaam / zaak</label>
+                  <input type="text" id="cBusiness" name="business" autocomplete="organization" placeholder="Bv. Slagerij De Smaak" data-i18n-placeholder="customer.businessPlaceholder">
+                </div>
+                <div class="field">
+                  <label for="cName" data-i18n="customer.name">Contactpersoon *</label>
+                  <input type="text" id="cName" name="name" autocomplete="name" placeholder="Bv. Ahmed Yilmaz" data-i18n-placeholder="customer.namePlaceholder" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="cEmail" data-i18n="customer.email">E-mail *</label>
+                  <input type="email" id="cEmail" name="email" autocomplete="email" placeholder="naam@bedrijf.be" data-i18n-placeholder="customer.emailPlaceholder" required>
+                </div>
+                <div class="field">
+                  <label for="cPhone" data-i18n="customer.phone">Telefoon *</label>
+                  <input type="tel" id="cPhone" name="phone" autocomplete="tel" placeholder="+32 4xx xx xx xx" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="cCity" data-i18n="customer.city">Stad / gemeente</label>
+                  <input type="text" id="cCity" name="city" autocomplete="address-level2" placeholder="Bv. Zele" data-i18n-placeholder="customer.cityPlaceholder">
+                </div>
+                <div class="field">
+                  <label for="cVat" data-i18n="customer.vat">BTW-nummer (optioneel)</label>
+                  <input type="text" id="cVat" name="vat" placeholder="BE 0123.456.789">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="cMessage" data-i18n="customer.message">Waar hebt u interesse in?</label>
+                <textarea id="cMessage" name="message" placeholder="Bv. rundvlees, lamsvlees, kip en kruiden..." data-i18n-placeholder="customer.messagePlaceholder"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary customer-submit"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="customer.submit">Verstuur aanvraag</span></button>
+              <p class="customer-form-note" data-i18n="customer.formNote">Na het versturen opent WhatsApp met uw gegevens. Uw aanvraag wordt niet automatisch goedgekeurd.</p>
+            </form>
+
+            <div class="customer-success" id="customerSuccess" hidden aria-live="polite">
+              <span class="customer-success-icon"><i class="fa-solid fa-check"></i></span>
+              <h3 data-i18n="customer.successTitle">Bedankt! Uw aanvraag is klaar.</h3>
+              <p data-i18n="customer.successText">Verstuur uw gegevens via WhatsApp of e-mail. Na bevestiging ontvangt u de welkomstkorting.</p>
+              <div class="discount-code">
+                <small data-i18n="customer.codeLabel">Uw kortingscode</small>
+                <strong id="discountCode">WELKOM8</strong>
+              </div>
+              <div class="customer-success-actions">
+                <a href="#" id="customerWhatsApp" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="customer.whatsapp">Verstuur via WhatsApp</span></a>
+                <a href="#" id="customerMail" class="btn btn-dark"><i class="fa-solid fa-envelope"></i> <span data-i18n="customer.mail">Verstuur via e-mail</span></a>
+              </div>
+              <button type="button" class="customer-again" id="customerAgain" data-i18n="customer.again">Nieuwe aanvraag</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-kicker" data-i18n="contact.kicker">Contact &amp; bestelling</span>
+          <h2 class="section-title" data-i18n-html="contact.title">Vraag uw <span class="accent">prijs of bestelling aan.</span></h2>
+          <p class="section-subtitle" data-i18n="contact.subtitle">Stuur uw bestelling of vraag een prijsofferte per kg, doos of karton. Voor particulieren, beenhouwers, horeca en foodservice in heel België.</p>
+        </div>
+
+        <div class="contact-grid reveal">
+          <article class="contact-card dark">
+            <span class="contact-icon"><i class="fa-brands fa-whatsapp"></i></span>
+            <h3 data-i18n="contact.waTitle">WhatsApp bestellingen</h3>
+            <p data-i18n="contact.waText">Stuur uw bestelling of vraag rechtstreeks een prijs per kg, doos of karton. Voor particulier en groothandel. Tijdens de openingsuren antwoorden we doorgaans binnen 15 minuten.</p>
+            <div class="contact-line"><i class="fa-solid fa-phone"></i><span>+32 470 12 34 56</span></div>
+            <a href="https://wa.me/32470123456?text=Dag%20Ali%20Vleeswaren%2C%20ik%20wil%20graag%20een%20prijs%20of%20beschikbaarheid%20aanvragen%20voor%20particulier%20of%20groothandel." target="_blank" rel="noopener noreferrer" class="contact-wa" data-wa-key="wa.general" data-track="whatsapp_contact"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="contact.waCta">Start WhatsApp-chat</span></a>
+          </article>
+
+          <article class="contact-card">
+            <span class="contact-icon"><i class="fa-solid fa-warehouse"></i></span>
+            <h3 data-i18n="contact.pickupTitle">Afhaling op afspraak</h3>
+            <p data-i18n="contact.pickupText">Particulieren en professionelen halen hun bestelling op na bevestiging via WhatsApp of telefoon.</p>
+            <div class="contact-line"><i class="fa-solid fa-location-dot"></i><span>Nijverheidsstraat 24<br>9240 Zele, België</span></div>
+            <div class="contact-line"><i class="fa-solid fa-phone"></i><span>+32 470 12 34 56</span></div>
+            <div class="contact-line"><i class="fa-solid fa-envelope"></i><span>info@alivleeswaren.be</span></div>
+          </article>
+
+          <article class="contact-card">
+            <span class="contact-icon"><i class="fa-solid fa-clock"></i></span>
+            <h3 data-i18n="contact.hoursTitle">Levering &amp; openingsuren</h3>
+            <p data-i18n="contact.hoursText">Leveringen voor particulieren en professionelen zijn ook vóór de openingstijden mogelijk na afspraak.</p>
+            <div class="hours-row"><strong data-i18n="contact.weekdays">Maandag - vrijdag</strong><span>07:00 - 18:00</span></div>
+            <div class="hours-row"><strong data-i18n="contact.saturday">Zaterdag</strong><span>07:00 - 14:00</span></div>
+            <div class="hours-row"><strong data-i18n="contact.sunday">Zondag</strong><span class="closed" data-i18n="contact.closed">Gesloten</span></div>
+            <div class="contact-line" style="margin-top:14px;"><i class="fa-solid fa-truck-fast"></i><span data-i18n="contact.hoursDelivery">Levering in heel België na afspraak.</span></div>
+          </article>
+        </div>
+
+        <div class="contact-cta reveal">
+          <div class="contact-cta-copy">
+            <span><i class="fa-solid fa-store"></i> <span data-i18n="contact.ctaBadge">Particulier of professionnel?</span></span>
+            <h3 data-i18n="contact.ctaTitle">Vraag vandaag nog uw prijs per kg of per doos.</h3>
+            <p data-i18n="contact.ctaText">Vertel ons welke producten en volumes u nodig hebt. Wij bezorgen u snel een voorstel op maat.</p>
+          </div>
+          <div class="contact-cta-actions">
+            <a href="https://wa.me/32470123456?text=Dag%20Ali%20Vleeswaren%2C%20ik%20wil%20graag%20een%20prijs%20of%20beschikbaarheid%20aanvragen%20voor%20particulier%20of%20groothandel." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" data-wa-key="wa.general" data-track="whatsapp_cta"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="contact.ctaWa">WhatsApp ons</span></a>
+            <a href="mailto:info@alivleeswaren.be" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> <span data-i18n="contact.ctaMail">Mail ons</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="#home" class="brand" aria-label="Ali Vleeswaren home">
+            <span class="brand-mark"><i class="fa-solid fa-drumstick-bite"></i></span>
+            <span class="brand-copy">
+              <span class="brand-name">Ali Vleeswaren</span>
+              <span class="brand-sub" data-i18n="brand.sub">Halal vlees &bull; Zele</span>
+            </span>
+          </a>
+          <p data-i18n="footer.about">Halal vlees voor particulieren, beenhouwers, horeca en foodservice. Vlees, vleeswaren, diepvries, kruiden en marinades per kg of per doos. Vanuit Zele naar heel België.</p>
+          <div class="footer-socials" aria-label="Social media">
+            <a href="https://wa.me/32470123456" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/alivleeswaren" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/alivleeswaren" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@alivleeswaren" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@alivleeswaren" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.snapchat.com/add/alivleeswaren" target="_blank" rel="noopener noreferrer" aria-label="Snapchat"><i class="fa-brands fa-snapchat"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.nav">Navigatie</h4>
+          <ul class="footer-links">
+            <li><a href="#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#over-ons" data-i18n="nav.about">Over Ons</a></li>
+            <li><a href="#assortiment" data-i18n="nav.assortment">Assortiment</a></li>
+            <li><a href="#rundvlees-snijkaart" data-i18n="cuts.kicker">Vlees snijkaart</a></li>
+            <li><a href="#promo-spotlight" data-i18n="nav.promo">Promo Spotlight</a></li>
+            <li><a href="../klanten/tr/" data-i18n="nav.customer">Word klant</a></li>
+            <li><a href="../admin/" data-i18n="nav.admin">Beheer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <div class="footer-contact">
+            <span><i class="fa-solid fa-location-dot"></i> Nijverheidsstraat 24, 9240 Zele</span>
+            <a href="tel:+32470123456"><i class="fa-solid fa-phone"></i> +32 470 12 34 56</a>
+            <a href="mailto:info@alivleeswaren.be"><i class="fa-solid fa-envelope"></i> info@alivleeswaren.be</a>
+            <span><i class="fa-solid fa-clock"></i> <span data-i18n="footer.hours">Ma-vr 07:00-18:00 &bull; Za 07:00-14:00</span></span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.agencyTitle">Concept &amp; realisatie</h4>
+          <div class="agency-card">
+            <span data-i18n="footer.agencyBy">Website door</span>
+            <a href="https://www.it-solutions-cakir.be/nl/" target="_blank" rel="noopener noreferrer">Cakir Technics <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <small data-i18n-html="footer.agencyDesc">IT-Solutions &bull; Zele<br>Digital, web &amp; slimme oplossingen.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footer.rights">&copy; 2026 Ali Vleeswaren. Alle rechten voorbehouden. &bull; BTW BE 0123.456.789</span>
+        <span><span data-i18n="footer.credit">Concept &amp; Realisatie door</span> <a href="https://www.it-solutions-cakir.be/nl/" target="_blank" rel="noopener noreferrer">Cakir Technics – IT-Solutions (Zele)</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/32470123456?text=Dag%20Ali%20Vleeswaren%2C%20ik%20heb%20een%20vraag." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat via WhatsApp" data-wa-key="wa.general" data-track="whatsapp_float">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-icon" id="toastIcon"><i class="fa-solid fa-check"></i></span>
+    <div class="toast-copy">
+      <strong id="toastTitle"></strong>
+      <span id="toastMessage"></span>
+    </div>
+    <button type="button" class="toast-close" id="toastClose" aria-label="Melding sluiten"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <script src="../translations.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
