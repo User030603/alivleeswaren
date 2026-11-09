@@ -307,9 +307,15 @@
 
     const getActivePromos = () => getSortedProducts().filter((product) => product.promo);
 
+    const getProductName = (product) => {
+      const names = window.ALI_PRODUCT_NAMES && window.ALI_PRODUCT_NAMES[activeLanguage];
+      if (names && product && names[product.id]) return names[product.id];
+      return product ? product.name : "";
+    };
+
     const getWhatsAppLink = (product) => {
       const message = t("wa.product", {
-        name: product.name,
+        name: getProductName(product),
         price: formatPrice(product.price),
         unit: getUnitLabel(product.unit)
       });
@@ -341,7 +347,7 @@
         ticker.textContent = t("promo.tickerEmpty");
         return;
       }
-      const preview = promos.slice(0, 2).map((product) => `${product.name} ${formatPrice(product.price)}`).join(" • ");
+      const preview = promos.slice(0, 2).map((product) => `${getProductName(product)} ${formatPrice(product.price)}`).join(" • ");
       ticker.textContent = `${t("promo.tickerNew")}: ${preview}${promos.length > 2 ? ` • +${promos.length - 2}` : ""}`;
     };
 
@@ -370,7 +376,7 @@
         return `
           <article class="promo-card" data-promo-id="${escapeHTML(product.id)}">
             <div class="promo-media">
-              <img src="${escapeHTML(resolveAsset(product.image))}" alt="${escapeHTML(product.name)}" loading="lazy" data-fallback="${escapeHTML(resolveAsset(fallback))}">
+              <img src="${escapeHTML(resolveAsset(product.image))}" alt="${escapeHTML(getProductName(product))}" loading="lazy" data-fallback="${escapeHTML(resolveAsset(fallback))}">
               <span class="promo-flag"><i class="fa-solid fa-bolt"></i> ${escapeHTML(t("promo.flag"))}</span>
               <div class="promo-price">
                 <small>${escapeHTML(t("promo.actionPrice"))}</small>
@@ -380,7 +386,7 @@
             </div>
             <div class="promo-body">
               <span class="promo-category"><i class="${category.icon}"></i> ${escapeHTML(getCategoryLabel(product.category))}</span>
-              <h3>${escapeHTML(product.name)}</h3>
+              <h3>${escapeHTML(getProductName(product))}</h3>
               <p>${escapeHTML(description)}</p>
               <div class="promo-actions">
                 <span class="promo-weight"><i class="fa-solid fa-weight-hanging"></i> ${escapeHTML(unit)}</span>
@@ -444,7 +450,7 @@
         return `
           <article class="product-card">
             <div class="product-media">
-              <img src="${escapeHTML(resolveAsset(product.image))}" alt="${escapeHTML(product.name)}" loading="lazy" data-fallback="${escapeHTML(resolveAsset(fallback))}">
+              <img src="${escapeHTML(resolveAsset(product.image))}" alt="${escapeHTML(getProductName(product))}" loading="lazy" data-fallback="${escapeHTML(resolveAsset(fallback))}">
               <span class="product-cat"><i class="${category.icon}"></i> ${escapeHTML(getCategoryLabel(product.category))}</span>
               ${product.promo ? `<span class="product-promo-flag">${escapeHTML(t("product.promo"))}</span>` : ""}
             </div>
@@ -453,7 +459,7 @@
                 <span class="product-weight"><i class="fa-solid fa-weight-hanging"></i> ${escapeHTML(unit)}</span>
                 <span class="product-stock"><span class="status-dot"></span> ${escapeHTML(t("product.stock"))}</span>
               </div>
-              <h3>${escapeHTML(product.name)}</h3>
+              <h3>${escapeHTML(getProductName(product))}</h3>
               <p class="product-desc">${escapeHTML(description)}</p>
               <div class="product-footer">
                 <div class="product-price">${formatPrice(product.price)}${perKg ? ' <small>/ kg</small>' : ""}</div>
@@ -473,155 +479,23 @@
       </g>
     `;
 
-    const buildRundSvg = () => `
-      <svg class="cuts-map-svg cuts-svg-rund" viewBox="0 0 900 440" role="img" aria-label="${escapeHTML(t("cuts.panelRund"))}">
-        <defs>
-          <linearGradient id="rundHide" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#b0764b"/>
-            <stop offset="0.55" stop-color="#95603c"/>
-            <stop offset="1" stop-color="#754426"/>
-          </linearGradient>
-          <linearGradient id="rundFace" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#a76c44"/>
-            <stop offset="1" stop-color="#7e4a2a"/>
-          </linearGradient>
-          <clipPath id="rundClip"><path d="M208 200 C228 178 258 166 300 160 C320 150 360 146 410 148 C500 152 610 152 690 170 C742 182 776 210 786 246 C795 280 782 310 758 327 C726 348 660 354 584 352 C506 350 404 354 324 348 C280 345 244 332 226 308 C212 290 205 254 205 230 C205 216 206 206 208 200 Z"/></clipPath>
-        </defs>
-        <ellipse class="cuts-shadow" cx="470" cy="416" rx="300" ry="14" />
-        <g class="cuts-animal">
-          <path class="cuts-tail" d="M786 212 C814 224 824 254 814 286" />
-          <ellipse class="cuts-tail-tuft" cx="812" cy="298" rx="9" ry="13" />
-          <path class="cuts-leg" d="M322 300 C318 330 318 362 322 396 L360 396 C364 362 364 330 360 300 Z" />
-          <path class="cuts-leg" d="M690 300 C684 332 684 364 690 398 L730 398 C736 364 736 332 730 300 Z" />
-          <rect class="cuts-hoof" x="320" y="394" width="42" height="14" rx="5" />
-          <rect class="cuts-hoof" x="688" y="396" width="44" height="14" rx="5" />
-          <path class="cuts-leg" d="M244 300 C240 330 240 362 244 396 L284 396 C288 362 288 330 284 300 Z" />
-          <path class="cuts-leg" d="M636 300 C630 334 630 366 636 400 L680 400 C686 366 686 334 680 300 Z" />
-          <rect class="cuts-hoof" x="242" y="394" width="44" height="14" rx="5" />
-          <rect class="cuts-hoof" x="634" y="398" width="50" height="15" rx="5" />
-          <path class="cuts-body" d="M208 200 C228 178 258 166 300 160 C320 150 360 146 410 148 C500 152 610 152 690 170 C742 182 776 210 786 246 C795 280 782 310 758 327 C726 348 660 354 584 352 C506 350 404 354 324 348 C280 345 244 332 226 308 C212 290 205 254 205 230 C205 216 206 206 208 200 Z" />
-          <path class="cuts-dewlap" d="M208 240 C226 258 232 284 224 308 C214 298 206 280 204 260 Z" />
-          <ellipse class="cuts-cheek" cx="152" cy="238" rx="24" ry="15" />
-          <path class="cuts-ear" d="M158 162 C172 142 196 134 210 142 C202 160 184 172 166 175 Z" />
-          <path class="cuts-head" d="M206 194 C198 174 180 162 158 164 C136 166 118 182 113 202 L103 232 C99 250 107 267 125 272 C141 277 154 270 161 257 C169 267 185 272 197 265 C211 255 215 230 212 210 Z" />
-          <ellipse class="cuts-muzzle" cx="110" cy="252" rx="27" ry="18" />
-          <ellipse class="cuts-nostril" cx="98" cy="250" rx="4" ry="3" />
-          <path class="cuts-mouth" d="M86 264 Q110 270 134 262" />
-          <path class="cuts-horn" d="M160 156 C150 132 168 118 188 124 C180 138 174 150 170 158 Z" />
-          <circle class="cuts-eye" cx="147" cy="199" r="5" />
-          <circle class="cuts-eye-glint" cx="149" cy="197" r="1.6" />
-        </g>
-        <g class="cuts-regions">
-          ${svgRegion("rund-chuck", t("cuts.sub.chuck"), '<path clip-path="url(#rundClip)" d="M208 198 C226 164 270 150 332 150 L332 266 C286 270 240 250 220 226 C212 216 208 206 208 198 Z"/>', 270, 214, "1")}
-          ${svgRegion("rund-rib", t("cuts.sub.rib"), '<path clip-path="url(#rundClip)" d="M332 150 L458 148 L458 266 L332 266 Z"/>', 394, 212, "2")}
-          ${svgRegion("rund-loin", t("cuts.sub.loin"), '<path clip-path="url(#rundClip)" d="M458 148 L566 146 L566 252 L458 266 Z"/>', 512, 206, "3")}
-          ${svgRegion("rund-sirloin", t("cuts.sub.sirloin"), '<path clip-path="url(#rundClip)" d="M566 146 L648 152 L648 268 L566 252 Z"/>', 606, 214, "4")}
-          ${svgRegion("rund-round", t("cuts.sub.round"), '<path clip-path="url(#rundClip)" d="M648 152 C700 162 736 186 752 216 C770 250 768 288 750 312 C730 338 694 352 650 352 L648 268 Z"/>', 700, 254, "5")}
-          ${svgRegion("rund-brisket", t("cuts.sub.brisket"), '<path clip-path="url(#rundClip)" d="M208 258 C248 264 294 266 332 266 L332 338 C302 342 266 338 238 322 C220 310 210 286 208 258 Z"/>', 270, 306, "6")}
-          ${svgRegion("rund-plate", t("cuts.sub.plate"), '<path clip-path="url(#rundClip)" d="M332 266 L520 264 L520 342 L332 342 Z"/>', 426, 306, "7")}
-          ${svgRegion("rund-flank", t("cuts.sub.flank"), '<path clip-path="url(#rundClip)" d="M520 264 L648 264 L648 334 L520 342 Z"/>', 584, 304, "8")}
-        </g>
-      </svg>
+    const CUT_MAP_IMAGES = {
+      rund: "images/cuts/rund.jpg",
+      lam: "images/cuts/lam.jpeg",
+      kip: "images/cuts/kip.jpeg"
+    };
+
+    const cutsFigure = (animal, altKey) => `
+      <figure class="cuts-map-figure">
+        <img class="cuts-map-img" src="${escapeHTML(resolveAsset(CUT_MAP_IMAGES[animal]))}" alt="${escapeHTML(t(altKey))}" loading="lazy">
+      </figure>
     `;
 
-    const buildLamSvg = () => `
-      <svg class="cuts-map-svg cuts-svg-lam" viewBox="0 0 900 440" role="img" aria-label="${escapeHTML(t("cuts.panelLam"))}">
-        <defs>
-          <linearGradient id="lamWool" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#fdf9ef"/>
-            <stop offset="0.6" stop-color="#f1e7d2"/>
-            <stop offset="1" stop-color="#e0d2b6"/>
-          </linearGradient>
-          <linearGradient id="lamFace" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#c3ae8c"/>
-            <stop offset="1" stop-color="#957f5c"/>
-          </linearGradient>
-          <clipPath id="lamClip"><path d="M232 250 C224 214 240 190 268 186 C280 164 308 158 324 172 C338 150 370 148 384 166 C400 148 432 150 444 170 C462 152 494 158 502 178 C522 162 552 168 558 188 C580 176 608 186 612 206 C636 200 658 214 656 234 C682 238 698 260 688 282 C702 302 692 324 668 332 C640 344 580 348 520 346 C452 344 386 348 330 344 C290 341 254 328 240 306 C228 290 228 268 232 250 Z"/></clipPath>
-        </defs>
-        <ellipse class="cuts-shadow" cx="470" cy="418" rx="290" ry="13" />
-        <g class="cuts-animal">
-          <path class="cuts-tail" d="M690 240 C712 244 722 262 716 280" />
-          <ellipse class="cuts-tail-tuft" cx="713" cy="286" rx="8" ry="10" />
-          <path class="cuts-leg" d="M380 328 C377 352 377 382 380 408 L396 408 C399 382 399 352 396 328 Z" />
-          <path class="cuts-leg" d="M690 326 C687 350 687 380 690 406 L706 406 C709 380 709 350 706 326 Z" />
-          <rect class="cuts-hoof" x="378" y="406" width="20" height="11" rx="4" />
-          <rect class="cuts-hoof" x="688" y="404" width="20" height="11" rx="4" />
-          <path class="cuts-leg" d="M312 328 C309 352 309 382 312 408 L328 408 C331 382 331 352 328 328 Z" />
-          <path class="cuts-leg" d="M630 328 C627 352 627 382 630 408 L648 408 C651 382 651 352 648 328 Z" />
-          <rect class="cuts-hoof" x="310" y="406" width="20" height="11" rx="4" />
-          <rect class="cuts-hoof" x="628" y="406" width="22" height="11" rx="4" />
-          <path class="cuts-body" d="M232 250 C224 214 240 190 268 186 C280 164 308 158 324 172 C338 150 370 148 384 166 C400 148 432 150 444 170 C462 152 494 158 502 178 C522 162 552 168 558 188 C580 176 608 186 612 206 C636 200 658 214 656 234 C682 238 698 260 688 282 C702 302 692 324 668 332 C640 344 580 348 520 346 C452 344 386 348 330 344 C290 341 254 328 240 306 C228 290 228 268 232 250 Z" />
-          <path class="cuts-head" d="M236 232 C228 212 210 202 192 206 C176 210 166 224 167 240 L163 264 C161 282 170 296 186 299 C200 302 212 293 214 281 C221 289 233 292 242 285 C251 276 251 256 247 240 Z" />
-          <ellipse class="cuts-muzzle" cx="182" cy="276" rx="18" ry="13" />
-          <ellipse class="cuts-nostril" cx="172" cy="274" rx="3" ry="2.5" />
-          <ellipse class="cuts-wool-cap" cx="208" cy="210" rx="26" ry="15" />
-          <path class="cuts-ear" d="M204 218 C191 226 188 248 200 262 C214 253 217 232 211 218 Z" />
-          <circle class="cuts-eye" cx="208" cy="236" r="4.5" />
-          <circle class="cuts-eye-glint" cx="210" cy="234" r="1.4" />
-        </g>
-        <g class="cuts-regions">
-          ${svgRegion("lam-schouder", t("cuts.lam.schouder"), '<path clip-path="url(#lamClip)" d="M232 240 C246 200 284 182 350 182 L350 296 C308 300 266 284 248 262 C238 252 234 246 232 240 Z"/>', 292, 244, "1")}
-          ${svgRegion("lam-rack", t("cuts.lam.rack"), '<path clip-path="url(#lamClip)" d="M350 178 L478 174 L478 284 L350 296 Z"/>', 414, 232, "2")}
-          ${svgRegion("lam-lende", t("cuts.lam.lende"), '<path clip-path="url(#lamClip)" d="M478 174 L600 180 L600 280 L478 284 Z"/>', 538, 230, "3")}
-          ${svgRegion("lam-bout", t("cuts.lam.bout"), '<path clip-path="url(#lamClip)" d="M600 180 C640 188 664 210 674 238 C684 268 678 302 658 320 C640 336 612 342 592 340 L600 280 Z"/>', 634, 264, "4")}
-          ${svgRegion("lam-stoof", t("cuts.lam.stoof"), '<path clip-path="url(#lamClip)" d="M350 296 L578 286 L578 342 L350 342 Z"/>', 462, 320, "5")}
-          ${svgRegion("lam-extra", t("cuts.lam.extra"), '<path clip-path="url(#lamClip)" d="M248 262 L350 296 L350 342 L288 340 C266 334 252 318 246 298 Z"/>', 298, 318, "6")}
-        </g>
-      </svg>
-    `;
+    const buildRundSvg = () => cutsFigure("rund", "cuts.panelRund");
 
-    const buildKipSvg = () => `
-      <svg class="cuts-map-svg cuts-svg-kip" viewBox="0 0 900 440" role="img" aria-label="${escapeHTML(t("cuts.panelKip"))}">
-        <defs>
-          <linearGradient id="kipBody" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#f7eccd"/>
-            <stop offset="0.6" stop-color="#ecd9ad"/>
-            <stop offset="1" stop-color="#d8be8d"/>
-          </linearGradient>
-          <linearGradient id="kipWing" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#e8d5a8"/>
-            <stop offset="1" stop-color="#c9ab77"/>
-          </linearGradient>
-          <clipPath id="kipClip">
-            <path d="M340 238 C350 204 392 190 442 192 C486 194 534 200 574 214 C612 226 640 248 648 272 C658 296 646 320 618 332 C586 344 524 346 474 340 C424 334 374 326 348 308 C334 298 330 270 340 238 Z"/>
-            <path d="M545 322 C543 346 541 374 543 398 L561 398 C563 374 565 346 563 322 Z"/>
-            <path d="M600 320 C598 344 596 370 598 394 L616 394 C618 370 620 344 618 320 Z"/>
-          </clipPath>
-        </defs>
-        <ellipse class="cuts-shadow" cx="500" cy="414" rx="230" ry="12" />
-        <g class="cuts-animal">
-          <path class="cuts-feather" d="M644 252 C686 216 738 206 774 222 C748 234 716 248 668 270 Z" />
-          <path class="cuts-feather" d="M648 270 C696 244 746 242 776 260 C750 268 720 278 672 292 Z" />
-          <path class="cuts-feather" d="M652 288 C696 270 742 272 766 292 C742 298 714 304 676 308 Z" />
-          <path class="cuts-legline" d="M545 322 L543 396" />
-          <path class="cuts-legline" d="M600 320 L598 392" />
-          <path class="cuts-toes" d="M543 398 L517 408 M543 398 L547 414 M543 398 L571 408" />
-          <path class="cuts-toes" d="M598 394 L574 404 M598 394 L602 410 M598 394 L624 404" />
-          <path class="cuts-body" d="M340 238 C350 204 392 190 442 192 C486 194 534 200 574 214 C612 226 640 248 648 272 C658 296 646 320 618 332 C586 344 524 346 474 340 C424 334 374 326 348 308 C334 298 330 270 340 238 Z" />
-          <path class="cuts-neck" d="M346 240 C330 216 312 198 292 188 C274 178 258 182 256 198 C254 214 268 226 286 234 C302 242 320 254 328 270 Z" />
-          <g class="cuts-head-group">
-            <circle class="cuts-comb" cx="230" cy="146" r="11" />
-            <circle class="cuts-comb" cx="246" cy="138" r="13" />
-            <circle class="cuts-comb" cx="262" cy="146" r="10" />
-            <circle class="cuts-head" cx="244" cy="176" r="28" />
-            <path class="cuts-beak" d="M220 170 L188 179 L220 190 Z" />
-            <ellipse class="cuts-wattle" cx="228" cy="202" rx="10" ry="13" />
-            <circle class="cuts-eye" cx="236" cy="170" r="4.5" />
-            <circle class="cuts-eye-glint" cx="238" cy="168" r="1.4" />
-          </g>
-          <path class="cuts-wing" d="M490 236 C524 218 578 224 610 246 C626 258 622 280 600 286 C570 294 530 286 504 272 C490 264 482 248 490 236 Z" />
-          <path class="cuts-wing-line" d="M510 244 C534 236 566 238 588 250 M504 260 C528 252 562 254 586 266" />
-        </g>
-        <g class="cuts-regions">
-          ${svgRegion("kip-borst", t("cuts.kip.borst"), '<path clip-path="url(#kipClip)" d="M340 242 C362 214 400 202 442 202 L466 202 L466 306 C430 314 392 316 366 304 C346 296 336 270 340 242 Z"/>', 398, 266, "1")}
-          ${svgRegion("kip-vleugels", t("cuts.kip.vleugels"), '<path clip-path="url(#kipClip)" d="M490 236 C524 218 578 224 610 246 C626 258 622 280 600 286 C570 294 530 286 504 272 C490 264 482 248 490 236 Z"/>', 552, 262, "2")}
-          ${svgRegion("kip-dij", t("cuts.kip.dij"), '<path clip-path="url(#kipClip)" d="M606 248 C640 254 660 276 662 302 C664 326 646 342 620 344 L594 344 L594 264 Z"/>', 636, 310, "3")}
-          ${svgRegion("kip-drumsticks", t("cuts.kip.drumsticks"), '<path clip-path="url(#kipClip)" d="M532 316 L576 316 L576 404 L532 404 Z"/><path clip-path="url(#kipClip)" d="M588 316 L630 316 L630 400 L588 400 Z"/>', 553, 382, "4")}
-          ${svgRegion("kip-spies", t("cuts.kip.spies"), '<path clip-path="url(#kipClip)" d="M470 204 C520 204 570 212 602 226 L602 250 C566 236 520 230 470 230 Z"/>', 502, 218, "5")}
-          ${svgRegion("kip-lever", t("cuts.kip.lever"), '<path clip-path="url(#kipClip)" d="M468 306 C500 312 534 312 566 306 L578 334 C548 342 508 342 476 336 Z"/>', 524, 322, "6")}
-        </g>
-      </svg>
-    `;
+    const buildLamSvg = () => cutsFigure("lam", "cuts.panelLam");
+
+    const buildKipSvg = () => cutsFigure("kip", "cuts.panelKip");
 
     const CUT_PANELS = [
       {
@@ -694,8 +568,8 @@
           const rows = items.length
             ? items.map((product) => `
                 <li>
-                  <img class="cut-thumb" src="${escapeHTML(resolveAsset(product.image))}" alt="${escapeHTML(product.name)}" loading="lazy" data-fallback="${escapeHTML(resolveAsset(product.image))}">
-                  <span>${escapeHTML(product.name)}</span>
+                  <img class="cut-thumb" src="${escapeHTML(resolveAsset(product.image))}" alt="${escapeHTML(getProductName(product))}" loading="lazy" data-fallback="${escapeHTML(resolveAsset(product.image))}">
+                  <span>${escapeHTML(getProductName(product))}</span>
                   <strong>${formatPrice(product.price)}</strong>
                 </li>
               `).join("")
@@ -775,17 +649,17 @@
         return `
           <div class="admin-row" data-id="${escapeHTML(product.id)}">
             <div class="admin-row-thumb">
-              <img src="${escapeHTML(resolveAsset(product.image))}" alt="${escapeHTML(product.name)}" loading="lazy" data-fallback="${escapeHTML(resolveAsset(fallback))}">
+              <img src="${escapeHTML(resolveAsset(product.image))}" alt="${escapeHTML(getProductName(product))}" loading="lazy" data-fallback="${escapeHTML(resolveAsset(fallback))}">
             </div>
             <div class="admin-row-copy">
-              <strong>${escapeHTML(product.name)}</strong>
+              <strong>${escapeHTML(getProductName(product))}</strong>
               <span>${escapeHTML(category.short)} &bull; <b>${formatPrice(product.price)}</b> &bull; ${escapeHTML(product.unit)}</span>
             </div>
             <button type="button" class="promo-toggle ${product.promo ? "is-on" : ""}" data-action="toggle" data-id="${escapeHTML(product.id)}" aria-pressed="${product.promo}" title="Promo aan of uit zetten">
               <span class="toggle-track"><span class="toggle-knob"></span></span>
               <span>${product.promo ? "Promo live" : "Promo uit"}</span>
             </button>
-            <button type="button" class="delete-btn" data-action="delete" data-id="${escapeHTML(product.id)}" title="Product verwijderen" aria-label="${escapeHTML(product.name)} verwijderen">
+            <button type="button" class="delete-btn" data-action="delete" data-id="${escapeHTML(product.id)}" title="Product verwijderen" aria-label="${escapeHTML(getProductName(product))} verwijderen">
               <i class="fa-solid fa-trash"></i>
             </button>
           </div>
@@ -921,9 +795,9 @@
       renderAll(product.promo ? product.id : null);
 
       if (product.promo) {
-        showToast("Promo live gezet", `${product.name} staat nu bovenaan in de Promo Spotlight.`);
+        showToast("Promo live gezet", `${getProductName(product)} staat nu bovenaan in de Promo Spotlight.`);
       } else {
-        showToast("Promo uitgeschakeld", `${product.name} is verwijderd uit de Promo Spotlight.`);
+        showToast("Promo uitgeschakeld", `${getProductName(product)} is verwijderd uit de Promo Spotlight.`);
       }
     };
 
@@ -933,7 +807,7 @@
       products = products.filter((item) => item.id !== id);
       saveProducts();
       renderAll();
-      showToast("Product verwijderd", `${product.name} is definitief uit de demo verwijderd.`);
+      showToast("Product verwijderd", `${getProductName(product)} is definitief uit de demo verwijderd.`);
     };
 
     const resetDemo = () => {
@@ -1284,9 +1158,9 @@
       document.getElementById("pUnit").value = "per kg";
 
       if (promo) {
-        showToast("Promo direct live", `${product.name} staat nu bovenaan de Promo Spotlight en het assortiment.`);
+        showToast("Promo direct live", `${getProductName(product)} staat nu bovenaan de Promo Spotlight en het assortiment.`);
       } else {
-        showToast("Product toegevoegd", `${product.name} is toegevoegd aan het assortiment.`);
+        showToast("Product toegevoegd", `${getProductName(product)} is toegevoegd aan het assortiment.`);
       }
     });
 

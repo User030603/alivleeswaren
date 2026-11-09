@@ -3991,6 +3991,7 @@
     }
 
     .animal-art {
+      position: relative;
       display: grid;
       place-items: center;
       width: 100%;
@@ -4003,15 +4004,36 @@
         linear-gradient(160deg, #fffdf9, #f3ece2);
     }
 
-    .animal-art svg {
+    .animal-art svg,
+    .animal-art .animal-photo {
       width: 100%;
       height: 100%;
       max-width: 175px;
       transition: transform 0.35s ease;
     }
 
+    .animal-art .animal-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .animal-card[data-animal-category="lam"] .animal-photo {
+      object-position: 50% 62%;
+    }
+
+    .animal-card[data-animal-category="kip"] .animal-photo {
+      object-position: 50% 84%;
+    }
+
     .animal-card:hover .animal-art svg,
-    .animal-card.active .animal-art svg {
+    .animal-card:hover .animal-art .animal-photo,
+    .animal-card.active .animal-art svg,
+    .animal-card.active .animal-art .animal-photo {
       transform: translateY(-3px) scale(1.04);
     }
 
@@ -5011,6 +5033,30 @@
       overflow: visible;
     }
 
+    .cuts-map-figure {
+      position: relative;
+      margin: 6px 0 2px;
+    }
+
+    .cuts-map-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 460px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #f4ecdd;
+    }
+
+    .cuts-map-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: visible;
+    }
+
     .cuts-tail {
       fill: none;
       stroke: #8f0b21;
@@ -5024,22 +5070,23 @@
     }
 
     .cut-region path {
-      fill: rgba(200, 16, 46, 0.7);
-      stroke: rgba(255, 255, 255, 0.92);
-      stroke-width: 2.5;
+      fill: rgba(200, 16, 46, 0.1);
+      stroke: rgba(163, 15, 36, 0.5);
+      stroke-width: 2;
       stroke-dasharray: 5 4;
-      transition: fill var(--tr), stroke-width var(--tr);
+      transition: fill var(--tr), stroke-width var(--tr), stroke var(--tr);
     }
 
     .cut-region:nth-child(2n) path {
-      fill: rgba(160, 26, 36, 0.76);
+      fill: rgba(160, 26, 36, 0.14);
     }
 
     .cut-region:hover path,
     .cut-region:focus-visible path,
     .cut-region.active path {
-      fill: rgba(217, 164, 65, 0.95);
+      fill: rgba(217, 164, 65, 0.38);
       stroke: #fff;
+      stroke-width: 3;
     }
 
     .cut-region.active path {
@@ -5270,54 +5317,7 @@
       fill: #22140e;
     }
 
-    .cuts-svg-rund .cuts-tail,
-    .cuts-svg-lam .cuts-tail,
-    .cuts-svg-rund .cuts-ear,
-    .cuts-svg-lam .cuts-ear,
-    .cuts-svg-kip .cuts-head-group {
-      transform-box: fill-box;
-    }
-
-    .cuts-svg-rund .cuts-tail,
-    .cuts-svg-lam .cuts-tail {
-      transform-origin: 0% 20%;
-      animation: cutTailSway 4.5s ease-in-out infinite;
-    }
-
-    .cuts-svg-rund .cuts-ear,
-    .cuts-svg-lam .cuts-ear {
-      transform-origin: 50% 50%;
-      animation: cutEarFlick 6s ease-in-out infinite;
-    }
-
-    .cuts-svg-kip .cuts-head-group {
-      transform-origin: 60% 90%;
-      animation: kipHeadBob 3.6s ease-in-out infinite;
-    }
-
-    @keyframes cutTailSway {
-      0%, 100% { transform: rotate(-4deg); }
-      50% { transform: rotate(7deg); }
-    }
-
-    @keyframes cutEarFlick {
-      0%, 88%, 100% { transform: rotate(0deg); }
-      91% { transform: rotate(-8deg); }
-      94% { transform: rotate(4deg); }
-    }
-
-    @keyframes kipHeadBob {
-      0%, 100% { transform: rotate(0deg) translateY(0); }
-      40% { transform: rotate(-4deg) translateY(-3px); }
-      70% { transform: translateY(2px); }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      .cuts-svg-rund .cuts-tail,
-      .cuts-svg-lam .cuts-tail,
-      .cuts-svg-rund .cuts-ear,
-      .cuts-svg-lam .cuts-ear,
-      .cuts-svg-kip .cuts-head-group,
       .cut-region.active path {
         animation: none;
       }

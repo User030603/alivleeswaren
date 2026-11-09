@@ -18,15 +18,12 @@
 - Fast, clear and easy to use on mobile and desktop.
 
 ## Animal Illustrations / Categories
-- The cut-map section uses realistic side-profile vector illustrations of a cow, a sheep and a chicken (anatomically plausible silhouette, head, legs, hooves, tail and shading).
-- The animals are whole, live-looking illustrations; only the cut overlays are shown in red/gold. No slaughter or carcass imagery.
-- Each animal is clickable: the numbered cut regions highlight the matching product card and vice versa.
+- The “Kies je vlees” category cards no longer use cartoon animal faces: each card now shows a meat photo (`images/beef.jpg`, `images/lamb.jpg`, `images/chicken.jpg`), object-fit cropped, in all five language pages.
+- The cut-map section now uses the client's own chart images (`images/cuts/rund.jpg`, `lam.jpeg`, `kip.jpeg`) instead of the previous vector diagrams.
 - Beef: 8 cuts (Chuck, Rib, Short Loin, Sirloin, Round, Brisket, Short Plate, Flank).
 - Lamb: 6 cuts (Shoulder, Rack, Loin, Leg, Stewing, Extra lamb products).
 - Chicken: 6 cuts (Breast, Wings, Thigh, Drumsticks, Skewers, Liver).
-- SVG region overlays are clipped to the animal body, so seams follow the anatomy instead of sitting in rectangles.
-- Subtle idle animations: tail sway, ear flick and chicken head bob; active cuts pulse. All disabled with `prefers-reduced-motion`.
-- Cut numbers on the animals match the numbered cards. All cut names and panel subtitles are translated in the five languages; product names stay Dutch.
+- Cut names and panel subtitles are translated in the five languages, and product names are localised through `ALI_PRODUCT_NAMES`.
 
 ## Word Klant / Customer Discount
 - Add a clear “Word klant” action.
@@ -58,21 +55,26 @@
 - Customer/lead pages: `klanten/nl/index.html`, `klanten/fr/index.html`, `klanten/en/index.html`, `klanten/tr/index.html`, `klanten/ar/index.html`.
 - Admin page: `admin/index.html`.
 - Internal links use clean folder URLs such as `/nl/`, `/fr/` and `/klanten/tr/`, not `index.html` links.
-- The root `index.html` redirects to `/nl/`.
+- The root `index.html` redirects to `/en/` (English landing page, per the client's static-per-language brief).
 - Product and category images are stored locally in `images/`; category images are used as fallback when a product has no specific photo.
 
 ## Cut Maps (Beef, Lamb & Chicken)
-- The homepage includes an interactive “Vlees snijkaart” section for beef, lamb and chicken.
-- Each panel combines a realistic animal SVG with a product card grid; the cut numbers on the animal match the card numbers.
-- Cut names, indicative prices and “price on request” states are shown in a responsive card grid.
-- Mobile: the layout collapses to one column at 991px; verified at 390px with no horizontal overflow.
-- Beef group labels use local names (e.g. NL: Schouder, Rib, Lende, Lendestuk, Dij, Borst, Buik, Flank) and each panel has its own translated subtitle.
+- The homepage includes a “Vlees snijkaart” section for beef, lamb and chicken.
+- Each panel is a `<figure class="cuts-map-figure">` containing the client-supplied chart image rendered as `<img class="cuts-map-img">`: `images/cuts/rund.jpg` (1131×743), `images/cuts/lam.jpeg` (720×404, dark background), `images/cuts/kip.jpeg` (402×497, portrait). Paths are centralised in `CUT_MAP_IMAGES` in `script.js`.
+- CSS `.cuts-map-img` uses `max-height:460px; object-fit:contain; background:#f4ecdd`, so the portrait chicken chart and the wide lamb chart are letterboxed on the panel background rather than cropped.
+- The interactive SVG overlay was removed with the switch to the client's charts: charts carry their own (Turkish) labels and their numbering does not match the product-card numbering. `setActiveCut` and the `.cuts-map-overlay` / `.cut-region` / `.cut-marker` CSS remain in place but nothing renders them.
+- Caveat: the charts contain baked-in Turkish text, so NL/FR/EN/AR pages show Turkish labels. Localised or text-free charts would be needed to fix this.
+- Original “butcher diagram” SVGs (`images/cuts/rund.svg`, `lam.svg`, `kip.svg`) are kept on disk but unused.
+- 20 cuts in total: beef 8, lamb 6 (incl. “lende”), chicken 6 (incl. “spies” and “lever”).
+- Cut names, indicative prices and “price on request” states are shown in a responsive card grid; each panel has a translated subtitle (`cuts.mapLabelRund/Lam/Kip`).
+- Mobile: the layout collapses to one column at 991px; verified at 390px with no horizontal overflow in all 5 languages.
 
 ## Product Photos
 - All 76 products have a local photo in `images/products/`. Filenames match `PRODUCT_IMAGES` in `script.js` (verified 76 files = 76 references).
 - Photos were curated to be brand-free, halal-appropriate (no pork) and clean product shots. Rejected candidates included branded packaging, pork products, historic black-and-white prints and cooked dishes.
-- Sources are Wikimedia Commons and Wikipedia infobox images (`/tmp/opencode/newphotos/manifest.json` contains the file titles). Before launch, confirm the license/attribution requirements for each file or replace with the client's own product photography.
-- Previous photos are backed up in `/tmp/opencode/newphotos/old-*.jpg` and `old2-*.jpg` during this session.
+- Sources are Wikimedia Commons, Wikipedia infobox images and Pexels (`/tmp/opencode/newphotos/manifest.json` and `/tmp/opencode/newphotos3/` contain the file metadata). Before launch, confirm the license/attribution requirements for each file or replace with the client's own product photography.
+- Latest swaps (client-requested style): `01-rundvlees-kwartier` = hanging beef on a hook (Pexels 5643415, styled studio shot), `10-hele-lam` = hanging lamb carcasses (Flickr/Openverse, CC BY), `17-hele-kip` = whole raw chicken on a slate board (Pexels 10842248). Portrait/square sources were composited onto a 4:3 canvas with a blurred background so the full product stays visible in the 212px card media.
+- Previous photos are backed up in `/tmp/opencode/newphotos/old-*.jpg`, `old2-*.jpg` and in `images/products/old3-*.jpg`.
 
 ## Languages
 - Dutch is the default language for Belgium.
@@ -85,7 +87,8 @@
 - Full translations are required, not only a language switcher.
 - The five-language switcher is implemented. Dutch, French, English, Turkish and Arabic translations are included.
 - Arabic uses RTL alignment; mobile and desktop layouts were checked.
-- Product names remain in Dutch for now. Generic product descriptions are translated; product-name translations can be added later.
+- Product names are localised through `window.ALI_PRODUCT_NAMES` (appended to `translations.js`, keys p1–p76) and the `getProductName(product)` helper in `script.js`; the Dutch `product.name` stays the canonical key for storage, admin editing and cut-group matching.
+- The static text in each language page is still activated at runtime by `data-i18n`; a fully static per-language build (no JS i18n) remains an open point since it would also affect the admin panel and the JS-rendered product grid.
 
 ## Marketing & Advertising
 - Goal: maximum attention and qualified leads from private customers and professional buyers (butchers, horeca and foodservice).
